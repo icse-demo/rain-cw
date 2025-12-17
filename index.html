@@ -780,16 +780,24 @@ function displayClickwrap() {
       workflowTemplateId: WORKFLOW_TEMPLATE_ID,
     });
 
-    const sleep = ms => new Promise(res => setTimeout(res, ms));
-    await sleep(1000);
+const showToast = (msg = "Success!") => {
+  const toast = document.createElement("div");
+  toast.classList.add("toast-message");
+  toast.innerText = msg;
+  document.body.appendChild(toast);
+  
+  // Remove after 3 seconds
+  setTimeout(() => toast.remove(), 3000);
+};
+showToast("Success!");
 
+  return;
+  /* Other functionality to ignore */
+  
   const elementsToRemove = document.querySelectorAll('.ant-card-body');
   elementsToRemove.forEach(function(element) {
     element.remove();
   });
-
-  return;
-  /* Other functionality to ignore */
 
     const signatureIframe = document.getElementById('signature-iframe');
         if (signatureIframe) {
