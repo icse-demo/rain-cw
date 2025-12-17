@@ -780,6 +780,9 @@ function displayClickwrap() {
       workflowTemplateId: WORKFLOW_TEMPLATE_ID,
     });
 
+    const sleep = ms => new Promise(res => setTimeout(res, ms));
+    await sleep(1000);
+
   const elementsToRemove = document.querySelectorAll('.ant-card-body');
   elementsToRemove.forEach(function(element) {
     element.remove();
