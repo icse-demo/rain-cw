@@ -758,13 +758,15 @@ function displayClickwrap() {
 
     return;
   }
-  return;
-  /* Other functionality to ignore */
 
   const elementsToRemove = document.querySelectorAll('.ant-card-body');
   elementsToRemove.forEach(function(element) {
     element.remove();
   });
+
+  return;
+  /* Other functionality to ignore */
+
     const signatureIframe = document.getElementById('signature-iframe');
         if (signatureIframe) {
             signatureIframe.addEventListener("load", () => {
