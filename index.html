@@ -739,7 +739,6 @@ iframe.addEventListener("load", () => {
         }
 
 function displayClickwrap() {
-  console.log("hello");
   var EMAIL_ADDRESS = document.getElementById("email-address").value.trim();
   var PASSWORD = document.getElementById('password').value.trim();
   var DATA_VENDOR = document.getElementById("data-vendor").value;
@@ -759,6 +758,8 @@ function displayClickwrap() {
 
     return;
   }
+  return;
+  /* Other functionality to ignore */
 
   const elementsToRemove = document.querySelectorAll('.ant-card-body');
   elementsToRemove.forEach(function(element) {
