@@ -743,10 +743,12 @@ function displayClickwrap() {
   var PASSWORD = document.getElementById('password').value.trim();
   var DATA_VENDOR = document.getElementById("data-vendor").value;
 
-  if (!DATA_VENDOR || !PASSWORD || !EMAIL_ADDRESS) {
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!DATA_VENDOR || !PASSWORD || !EMAIL_ADDRESS || !validateEmail(EMAIL_ADDRESS)) {
     alert("Please fill in all required fields");
     
-    if (!EMAIL_ADDRESS) document.getElementById("email-address").focus();
+    if (!EMAIL_ADDRESS || !validateEmail(EMAIL_ADDRESS)) document.getElementById("email-address").focus();
     else if (!PASSWORD) document.getElementById('password').focus();
     else if (!DATA_VENDOR) document.getElementById("data-vendor").focus();
 
@@ -758,6 +760,25 @@ function displayClickwrap() {
 
     return;
   }
+
+  sendIframeMessage({
+      type: 'set_data',
+      data: {
+          formValues: {
+            counterpartyName: EMAIL_ADDRESS,
+            counterpartySignerName: EMAIL_ADDRESS,
+            counterpartySignerEmail: EMAIL_ADDRESS,
+            dataVendor: DATA_VENDOR,
+          },
+          styles: CLICKWRAP_STYLES,
+      },
+      workflowTemplateId: WORKFLOW_TEMPLATE_ID
+  });
+
+    sendIframeMessage({
+      type: "send_acceptance",
+      workflowTemplateId: WORKFLOW_TEMPLATE_ID,
+    });
 
   const elementsToRemove = document.querySelectorAll('.ant-card-body');
   elementsToRemove.forEach(function(element) {
