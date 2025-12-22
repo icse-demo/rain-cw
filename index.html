@@ -487,8 +487,8 @@ nz-card[_ngcontent-ng-c459825792] .ant-card-body nz-input-group{
                </span>
                <select id="data-vendor" _ngcontent-ng-c1980984568="" class="ant-input ant-input-lg ng-untouched ng-pristine ng-valid ng-star-inserted" style="border: none; background: transparent; width: 100%; cursor: pointer;">
                   <option value="" disabled selected hidden>Select Data Vendor</option>
-                  <option value="Experian">Experian</option>
-                  <option value="Transunion">Transunion</option>
+                  <option value="Card">Card</option>
+                  <option value="Card and Virtual Account">Card and Virtual Account</option>
                   <option value="Other">Other</option>
                </select>
 
@@ -562,6 +562,13 @@ const WORKFLOW_TEMPLATE_ID = '6942f2e971faffa0d915c5d3';
 
 /* Track whether the terms have been accepted */
 var CLICKWRAP_ACCEPTED = false;
+
+/* Get URL hash params */
+const urlParams = new URLSearchParams(window.location.hash);
+const dataValue = urlParams.get('data');
+const selectElement = document.getElementById('data-vendor');
+if (dataValue) {
+    selectElement.value = dataValue;
 
 /* Preferred fonts, colors, styles for Ironclad (for full options, refer to documentation) */
 const CLICKWRAP_STYLES = {
