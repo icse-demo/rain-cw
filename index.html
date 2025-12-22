@@ -564,7 +564,7 @@ const WORKFLOW_TEMPLATE_ID = '6942f2e971faffa0d915c5d3';
 var CLICKWRAP_ACCEPTED = false;
 
 /* Get URL hash params */
-const urlParams = new URLSearchParams(window.location.hash);
+const urlParams = new URLSearchParams(window.location.hash.substring(1));
 const dataValue = urlParams.get('data');
 const selectElement = document.getElementById('data-vendor');
 if (dataValue) {
