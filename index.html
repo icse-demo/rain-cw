@@ -571,7 +571,7 @@ if (dataValue) {
     selectElement.value = dataValue;
 }
 var DATA_VENDOR = document.getElementById("data-vendor").value;
-vendorSelect.addEventListener('change', function() {
+selectElement.addEventListener('change', function() {
     DATA_VENDOR = document.getElementById("data-vendor").value;
       sendIframeMessage({
           type: 'set_data',
