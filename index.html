@@ -570,6 +570,7 @@ const selectElement = document.getElementById('data-vendor');
 if (dataValue) {
     selectElement.value = dataValue;
 }
+var DATA_VENDOR = document.getElementById("data-vendor").value;
 
 /* Preferred fonts, colors, styles for Ironclad (for full options, refer to documentation) */
 const CLICKWRAP_STYLES = {
@@ -610,7 +611,7 @@ function handleCWMessage(message) {
       sendIframeMessage({
           type: 'set_data',
           data: {
-              formValues: {}, // empty for now
+              formValues: DATA_VENDOR ? { dataVendor: DATA_VENDOR } : {}, // empty for now
               styles: CLICKWRAP_STYLES,
           },
           workflowTemplateId: WORKFLOW_TEMPLATE_ID
@@ -770,7 +771,7 @@ iframe.addEventListener("load", () => {
 function displayClickwrap() {
   var EMAIL_ADDRESS = document.getElementById("email-address").value.trim();
   var PASSWORD = document.getElementById('password').value.trim();
-  var DATA_VENDOR = document.getElementById("data-vendor").value;
+  DATA_VENDOR = document.getElementById("data-vendor").value;
 
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
