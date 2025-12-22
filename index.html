@@ -571,6 +571,17 @@ if (dataValue) {
     selectElement.value = dataValue;
 }
 var DATA_VENDOR = document.getElementById("data-vendor").value;
+vendorSelect.addEventListener('change', function() {
+    DATA_VENDOR = document.getElementById("data-vendor").value;
+      sendIframeMessage({
+          type: 'set_data',
+          data: {
+              formValues: DATA_VENDOR ? { dataVendor: DATA_VENDOR } : {},
+              styles: CLICKWRAP_STYLES,
+          },
+          workflowTemplateId: WORKFLOW_TEMPLATE_ID
+      });
+});
 
 /* Preferred fonts, colors, styles for Ironclad (for full options, refer to documentation) */
 const CLICKWRAP_STYLES = {
@@ -816,8 +827,8 @@ const showToast = (msg = "Success!") => {
   toast.innerText = msg;
   document.body.appendChild(toast);
   
-  // Remove after 3 seconds
-  setTimeout(() => toast.remove(), 3000);
+  // Remove after 3 seconds 
+  setTimeout(() => { toast.remove(); document.getElementById('sign-in-card').style.display = "none";}, 3000);
 };
 showToast("Success!");
 
